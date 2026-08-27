@@ -13,7 +13,7 @@ import unittest
 from arithmetic import evaluate, ExpressionError
 
 CONTRACT = json.loads(
-    (pathlib.Path(__file__).parent / "contract" / "arithmetic.contract.json").read_text()
+    (pathlib.Path(__file__).parent / "contract" / "arithmetic.contract.json").read_text(encoding="utf-8")
 )
 
 
