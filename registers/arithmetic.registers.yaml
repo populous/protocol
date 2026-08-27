@@ -1,0 +1,42 @@
+version: 1
+domain: arithmetic
+
+canonical_tokens:
+  ADD_OP: addition
+  SUB_OP: subtraction
+  MUL_OP: multiplication
+  DIV_OP: division
+  LPAREN: lparen
+  RPAREN: rparen
+  INT: integer
+
+precedence:
+  - tokens: [MUL_OP, DIV_OP]
+    level: 2
+    assoc: left
+  - tokens: [ADD_OP, SUB_OP]
+    level: 1
+    assoc: left
+
+normalization:
+  trim: true
+  collapse_internal_whitespace: true
+
+dialects:
+  ADD_OP: ['+', plus, add]
+  SUB_OP: ['-', minus, sub]
+  MUL_OP: ['*', x, '×', mul, times]
+  DIV_OP: ['/', '÷', div]
+  LPAREN: ['(']
+  RPAREN: [')']
+
+token_patterns:
+  INT: '^[0-9]+$'
+
+constraints:
+  - No implicit multiplication
+  - Unary operators are out of scope in v1
+
+errors:
+  invalid_token: unknown token
+  invalid_sequence: syntax error
