@@ -12,7 +12,7 @@ import pytest
 from arithmetic import evaluate, ExpressionError
 
 _CONTRACT_PATH = pathlib.Path(__file__).parents[1] / "contract" / "arithmetic.contract.json"
-_CONTRACT = json.loads(_CONTRACT_PATH.read_text())
+_CONTRACT = json.loads(_CONTRACT_PATH.read_text(encoding="utf-8"))
 
 
 def _case_ids():
