@@ -18,7 +18,7 @@ contract.cases.forEach((caseDef) => {
           const normalized = normalizeDialect(caseDef.input, registers);
           evaluateExpression(normalized);
         },
-        (error) => error && error.message === caseDef.expectError,
+        { message: caseDef.expectError },
       );
       return;
     }

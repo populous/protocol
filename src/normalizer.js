@@ -1,3 +1,12 @@
+const CANONICAL_BY_TOKEN = {
+  ADD_OP: '+',
+  SUB_OP: '-',
+  MUL_OP: '*',
+  DIV_OP: '/',
+  LPAREN: '(',
+  RPAREN: ')',
+};
+
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -7,16 +16,7 @@ function getAliasMap(registers) {
   const dialects = registers?.dialects || {};
 
   Object.entries(dialects).forEach(([token, aliases]) => {
-    const canonicalByToken = {
-      ADD_OP: '+',
-      SUB_OP: '-',
-      MUL_OP: '*',
-      DIV_OP: '/',
-      LPAREN: '(',
-      RPAREN: ')',
-    };
-
-    const canonical = canonicalByToken[token];
+    const canonical = CANONICAL_BY_TOKEN[token];
     if (!canonical || !Array.isArray(aliases)) {
       return;
     }
